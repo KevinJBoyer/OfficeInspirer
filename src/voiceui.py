@@ -34,6 +34,11 @@ def listen( question = "" ):
 	#response = input( question )
 	say(question)
 	response = client.recognize(language, hints)
+
+	if response is None:
+		response = ""
+
+
 	response = response.lower()
 
 	logging.debug("Heard <%s>." % response)
