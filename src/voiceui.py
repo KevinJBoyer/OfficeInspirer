@@ -143,11 +143,15 @@ def main():
 	while True:
 		input = listen()
 
-		if input == COMMAND_RANDOM: doRandom(quotes)
-		if input == COMMAND_GET_ID: doGetId(quotes)
-		if input == COMMAND_ADD:    doAdd(quotes)
-		if COMMAND_FORGET in input:
+		if   COMMAND_RANDOM in input: doRandom(quotes)
+		elif COMMAND_GET_ID in input: doGetId(quotes)
+		elif    COMMAND_ADD in input:    doAdd(quotes)
+		elif COMMAND_FORGET in input:
 			quotes = doForget( quotes, input )
+		else:
+			say("I didn't understand that. You can say %s or %s." \
+				% (COMMAND_RANDOM, COMMAND_ADD) \
+				)
 
 		save( QUOTE_FILE, quotes)
 

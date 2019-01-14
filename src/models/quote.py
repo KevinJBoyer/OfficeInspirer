@@ -41,7 +41,7 @@ class Quote:
 
 	def say(self):
 		self.lastSaid = time.time()
-		return "%s said %s" % (self.theSaying, self.author)
+		return "%s said by %s" % (self.theSaying, self.author)
 
 
 	def getLastSaid(self):
