@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 
+
+import locale
 import logging
 import pickle
 
-#import aiy.audio
-#import aiy.cloudspeech
-#import aiy.voicehat
+from aiy.board import Board, Led
+from aiy.cloudspeech import CloudSpeechClient
 import aiy.voice.tts
 
 from models.id import Id
@@ -22,11 +23,18 @@ COMMAND_ADD    = PREFIX + "add quote"
 COMMAND_FORGET = PREFIX + "forget"
 COMMAND_ABORT  = "never mind"
 
+hints  = (COMMAND_RANDOM, COMMAND_GET_ID, COMMAND_ADD, \
+		  COMMAND_FORGET, COMMAND_ABORT)
+client = CloudSpeechClient()
+language, _ = locale.getdefaultlocale()
 
 def listen( question = "" ):
 	logging.debug("Listening. Asked <%s>." % question)
 
-	response = input( question )
+	#response = input( question )
+	say(question)
+	response = client.recognize(language, hints)
+	response = response.lower()
 
 	logging.debug("Heard <%s>." % response)
 
@@ -140,20 +148,27 @@ def main():
 
 	quotes = load( QUOTE_FILE )
 
-	while True:
-		input = listen()
+	with Board() as board:
+		logging.debug("Initialized.")
 
-		if   COMMAND_RANDOM in input: doRandom(quotes)
-		elif COMMAND_GET_ID in input: doGetId(quotes)
-		elif    COMMAND_ADD in input:    doAdd(quotes)
-		elif COMMAND_FORGET in input:
-			quotes = doForget( quotes, input )
-		else:
-			say("I didn't understand that. You can say %s or %s." \
-				% (COMMAND_RANDOM, COMMAND_ADD) \
-				)
+		while True:
 
-		save( QUOTE_FILE, quotes)
+			logging.debug("Waiting for button press.")
+			board.button.wait_for_press()
+
+			input = listen()
+
+			if   COMMAND_RANDOM in input: doRandom(quotes)
+			elif COMMAND_GET_ID in input: doGetId(quotes)
+			elif    COMMAND_ADD in input:    doAdd(quotes)
+			elif COMMAND_FORGET in input:
+				quotes = doForget( quotes, input )
+			else:
+				say("I didn't understand that. You can say %s or %s." \
+					% (COMMAND_RANDOM, COMMAND_ADD) \
+					)
+
+			save( QUOTE_FILE, quotes)
 
 
 
