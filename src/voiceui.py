@@ -6,7 +6,7 @@ import pickle
 #import aiy.audio
 #import aiy.cloudspeech
 #import aiy.voicehat
-#import aiy.voice.tts
+import aiy.voice.tts
 
 from models.id import Id
 from models.quotelist import QuoteList
@@ -34,8 +34,9 @@ def listen( question = "" ):
 
 
 def say( message ):
-#	aiy.voice.tts.say(message)
-	print (message)
+	aiy.voice.tts.say(message)
+	logging.debug("Saying <%s>" % message)
+	#print (message)
 
 
 def verify(question):
