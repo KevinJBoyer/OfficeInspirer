@@ -9,7 +9,7 @@ from models.quote import Quote
 
 
 fileName = "quotes.pck"
-
+quotes = QuoteList()
 
 """
 logging.debug("Loading quotes from <%s>." % fileName)
@@ -21,7 +21,6 @@ try:
 
 except IOError:
 	logging.warn("Unable to load <%s>." % fileName)
-	quotes = QuoteList()
 """
 
 
