@@ -21,11 +21,11 @@ COMMAND_ABORT  = "never mind"
 def listen( question = "" ):
 	logging.debug("Listening. Asked <%s>." % question)
 
-	input = input( question )
+	response = input( question )
 
-	logging.debug("Heard <%s>." % input)
+	logging.debug("Heard <%s>." % response)
 
-	return input
+	return response
 
 
 def verify(question):
