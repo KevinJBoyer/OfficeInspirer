@@ -17,16 +17,19 @@ try:
 	with open( fileName,'rb' ) as f:
 		quotes = pickle.load( f )
 		logging.debug("Loaded quotes successfully.")
-		return quotes
 
 except IOError:
 	logging.warn("Unable to load <%s>." % fileName)
 	quotes = QuoteList()
 
+
+
 quotes.add( Quote( \
     "By providing more opportunities for people to feel part of something bigger than themselves, we can more strongly stitch together the fabric of our nation.", \
     "MacKenzie Moritz" \
     ))
+
+
 
 logging.debug("Saving quotes to <%s>." % fileName)
 try:
