@@ -17,9 +17,9 @@ from models.quote import Quote
 QUOTE_FILE     = "quotes.pck"
 
 PREFIX         = ""
-COMMAND_RANDOM = PREFIX + "say quote" #inspire me
+COMMAND_RANDOM = PREFIX + "inspire me"
 COMMAND_GET_ID = PREFIX + "what was that"
-COMMAND_ADD    = PREFIX + "add quote"
+COMMAND_ADD    = PREFIX + "add a quote"
 COMMAND_FORGET = PREFIX + "forget"
 COMMAND_ABORT  = "never mind"
 
@@ -62,7 +62,7 @@ def verify(question):
 			"I heard %s. Is that correct? You can say yes, no, or %s. " \
 			 % (answer, COMMAND_ABORT))
 
-		if verify == COMMAND_ABORT:
+		if COMMAND_ABORT in verify:
 			logging.debug("Received abort command.")
 			return COMMAND_ABORT
 
@@ -115,10 +115,8 @@ def doForget(quotes, input):
 	targetId = Id( input.replace(COMMAND_FORGET + " ", "") )
 	logging.debug("Removing quote with id <%s>." % targetId)
 
-	say ("Removing quote <%s>." % targetId)
+	say ("Removing quote %s." % targetId)
 	quotes.delete(targetId)
-
-	say ( quotes )
 
 	return quotes
 
