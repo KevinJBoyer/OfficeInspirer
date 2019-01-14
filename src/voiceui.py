@@ -3,9 +3,9 @@
 import logging
 import pickle
 
-import aiy.audio
-import aiy.cloudspeech
-import aiy.voicehat
+#import aiy.audio
+#import aiy.cloudspeech
+#import aiy.voicehat
 #import aiy.voice.tts
 
 from models.id import Id
