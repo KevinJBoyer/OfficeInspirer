@@ -21,8 +21,8 @@ COMMAND_ABORT  = "never mind"
 def listen( question = "" ):
 	logging.debug("Listening. Asked <%s>." % question)
 
-	input = raw_input( question )
-	
+	input = input( question )
+
 	logging.debug("Heard <%s>." % input)
 
 	return input
@@ -58,7 +58,7 @@ def doRandom(quotes):
 	quote = quotes.getRandomQuote()
 
 	logging.debug("Saying quote <%s>." % quote.getId() )
-	print quote.say()
+	print ( quote.say() )
 
 
 def doGetId(quotes):
@@ -67,7 +67,7 @@ def doGetId(quotes):
 	id = quotes.getLastSaid().getId()
 
 	logging.debug("Retrieved last id <%s>." % id)
-	print "That was %s" % id
+	print ( "That was %s" % id )
 
 
 def doAdd(quotes):
@@ -91,10 +91,10 @@ def doForget(quotes, input):
 	targetId = Id( input.replace(COMMAND_FORGET + " ", "") )
 	logging.debug("Removing quote with id <%s>." % targetId)
 
-	print "Removing quote <%s>." % targetId
+	print ( "Removing quote <%s>." % targetId )
 	quotes.delete(targetId)
 
-	print quotes
+	print (quotes)
 
 	return quotes
 
@@ -124,7 +124,7 @@ def save( fileName, quotes ):
 
 
 def main():
-	
+
 	logging.basicConfig(level=logging.DEBUG)
 
 	quotes = load( QUOTE_FILE )
@@ -135,7 +135,7 @@ def main():
 		if input == COMMAND_RANDOM: doRandom(quotes)
 		if input == COMMAND_GET_ID: doGetId(quotes)
 		if input == COMMAND_ADD:    doAdd(quotes)
-		if input == "debug": print quotes
+		if input == "debug": print (quotes)
 		if COMMAND_FORGET in input:
 			quotes = doForget( quotes, input )
 
