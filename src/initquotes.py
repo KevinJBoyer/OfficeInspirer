@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 import logging
 import pickle
 
@@ -10,7 +11,7 @@ from models.quote import Quote
 fileName = "quotes.pck"
 
 
-
+"""
 logging.debug("Loading quotes from <%s>." % fileName)
 
 try:
@@ -21,7 +22,7 @@ try:
 except IOError:
 	logging.warn("Unable to load <%s>." % fileName)
 	quotes = QuoteList()
-
+"""
 
 
 quotes.add( Quote( \
