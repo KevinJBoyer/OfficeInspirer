@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-
+import logging
 import pickle
 
 from models.quotelist import QuoteList
