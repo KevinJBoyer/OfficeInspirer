@@ -32,4 +32,5 @@ add quote
 Remove a quote from the collection:
 ```
 forget <ID>
+forget study name end
 ```
