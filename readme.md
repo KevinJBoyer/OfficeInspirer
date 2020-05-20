@@ -8,7 +8,7 @@ Run initquotes.py to create an initial quotes.pck file populated with inspiring 
 
 Then use either the command line UI (if on a computer) or the voice UI (if on an AIY Voice Kit device.)
 
-Every quote has an associated three word ID (e.g., "study name end") to facilitate easy removal when using the voice interface.
+Every quote has an associated three word ID (e.g., "book name end") to facilitate easy removal when using the voice interface.
 
 ## Voice UI
 
@@ -32,5 +32,5 @@ add quote
 Remove a quote from the collection:
 ```
 forget <ID>
-forget study name end
+forget book name end
 ```
