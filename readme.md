@@ -4,11 +4,11 @@ An app for the [Google AIY Voice Kit](https://aiyprojects.withgoogle.com/voice/)
 
 ## Getting Started
 
-Run initquotes.py to create an initial quotes.pck file populated with inspiring quotes on [universal national service](https://serviceyearalliance.org).
+Run initquotes.py to create an initial quotes.pck file populated with inspiring quotes on [universal national service](https://www.serviceyearalliance.org).
 
 Then use either the command line UI (if on a computer) or the voice UI (if on an AIY Voice Kit device.)
 
-Every quote has an associated three word ID (e.g., "study name end") to facilitate easy removal when using the voice.
+Every quote has an associated three word ID (e.g., "study name end") to facilitate easy removal when using the voice interface.
 
 ## Voice UI
 
